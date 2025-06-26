@@ -3,8 +3,8 @@ package constant;
 public enum TaskType {
     CODE("Code"),
     TEST("Test"),
-    REVIEW("Review"),
-    DESIGN("Design");
+    DESIGN("Design"),
+    REVIEW("Review");
 
     private String taskType;
 
