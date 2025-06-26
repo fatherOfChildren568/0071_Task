@@ -1,10 +1,10 @@
 package model;
 
 import constant.TaskType;
+import utility.GetLocalDate;
 
 public class TaskModel {
     // declear
-    private int initId = 1;
     private int id;
     private String nameTask;
     private TaskType taskType;
@@ -24,7 +24,7 @@ public class TaskModel {
         this.id = id;
         this.nameTask = nameTask;
         this.taskType = taskType;
-        this.date = date;
+        this.date = GetLocalDate.getDate();
         this.from = from;
         this.to = to;
         this.assignee = assignee;
@@ -99,8 +99,8 @@ public class TaskModel {
 
     @Override
     public String toString() {
-        return String.format("%-5s%-10s%-10s%-15s%-8s%-8s%-12s%-12s",
-                "ID", "Name Task", "Type Task", "Date", "From", "To", "Assignee", "Reviewer");
+        return String.format("%-5s%-15s%-15s%-15s%-12s%-12s%-12s%-12s\n",
+                id, nameTask, taskType, date, from, to, assignee, reviewer);
     }
 
 }
