@@ -7,6 +7,7 @@ import constant.Message;
 import constant.TaskType;
 import dto.TaskDTO;
 import model.TaskModel;
+import utility.GetLocalDate;
 import view.TaskView;
 
 public class TaskController {
@@ -15,6 +16,16 @@ public class TaskController {
     private TaskView taskView = new TaskView();
     private TaskDTO input = new TaskDTO();
     private List<TaskModel> listTask = new ArrayList<>();
+
+    // constructor
+    public TaskController() {
+        TaskModel taskModel1 = new TaskModel(1, "haha", TaskType.CODE, GetLocalDate.getDate(), 8.0, 9.0, "a", "bsg");
+        TaskModel taskModel2 = new TaskModel(2, "sdgsd", TaskType.CODE, GetLocalDate.getDate(), 9, 14, "a=p", "bssdg");
+        TaskModel taskModel3 = new TaskModel(3, "sgd sd", TaskType.CODE, GetLocalDate.getDate(), 10, 13, "as", "bs");
+        listTask.add(taskModel1);
+        listTask.add(taskModel2);
+        listTask.add(taskModel3);
+    }
 
     // setInput
     public void setInput(TaskDTO input) {
@@ -26,8 +37,10 @@ public class TaskController {
         taskView.displayAllTask();
     }
 
+    // init id auto increase
     private int idAuto = 1;
 
+    // add task
     public void addTask() {
         String nameTask = input.getNameTask();
         TaskType taskType = input.getTaskType();
@@ -52,6 +65,25 @@ public class TaskController {
         taskView.setBody(sb.toString());
         // display
         taskView.display();
+    }
+
+    // get size of list task
+    public int getSizeOfListTask() {
+        return listTask.size();
+    }
+
+    // delete task
+    public void delete() {
+        // get id need delete
+        int id = input.getId();
+        // loop in list to find task have id
+        for (int i = 0; i < listTask.size(); i++) {
+            TaskModel taskModel = listTask.get(i);
+            if (taskModel.getId() == id) {
+                listTask.remove(taskModel);
+                break;
+            }
+        }
     }
 
 }

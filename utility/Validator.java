@@ -43,4 +43,9 @@ public class Validator {
         }
         return true;
     }
+
+    public static boolean isValidInt(int dId) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isValidInt'");
+    }
 }
